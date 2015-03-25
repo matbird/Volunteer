@@ -16,6 +16,10 @@
 
 package net.yigong.wedget.crouton;
 
+import java.util.Iterator;
+import java.util.Queue;
+import java.util.concurrent.LinkedBlockingQueue;
+
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -30,10 +34,6 @@ import android.view.ViewTreeObserver;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityManager;
 import android.widget.FrameLayout;
-
-import java.util.Iterator;
-import java.util.Queue;
-import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * Manages the lifecycle of {@link Crouton}s.

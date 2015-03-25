@@ -8,6 +8,7 @@ import net.yigong.adapter.YiGongFragmentPagerAdapter;
 import net.yigong.channel.ChannelItem;
 import net.yigong.channel.ChannelManage;
 import net.yigong.utils.BaseTools;
+import net.yigong.view.fragment.NewsFragment_;
 import net.yigong.view.initview.SlidingMenuView;
 import net.yigong.view.ui.LeftView;
 import net.yigong.view.ui.LeftView_;
@@ -27,9 +28,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.Gravity;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -207,11 +208,14 @@ public class MainActivity extends BaseActivity {
     }
     
     public Fragment initFragment(String channelName) {
-        /*if (channelName.equals("头条")) {
+        if (channelName.equals("头条")) {
             newfragment = new NewsFragment_();
-        } else if (channelName.equals("足球")) {
-            newfragment = new FoodBallFragment_();
-        } else if (channelName.equals("娱乐")) {
+        } 
+        else if (channelName.equals("足球")) {
+            newfragment = new NewsFragment_();
+        } 
+        
+        /*else if (channelName.equals("娱乐")) {
             newfragment = new YuLeFragment_();
         } else if (channelName.equals("体育")) {
             newfragment = new TiYuFragment_();

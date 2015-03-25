@@ -1,8 +1,6 @@
 
 package net.yigong.wedget.slideingactivity;
 
-import com.nineoldandroids.view.ViewHelper;
-
 import net.yigong.R;
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -17,6 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+
+import com.nineoldandroids.view.ViewHelper;
 
 /**
  * Created by chenjishi on 14-3-17.

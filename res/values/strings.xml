@@ -15,4 +15,9 @@
    <string name="more">更多</string>
    
    <string name="press_again_exit">再次点击，退出客户端</string>
+   <string name="not_network">暂无网络</string>
+   
+   <string name="drop_down_list_footer_default_text"></string>
+    <string name="drop_down_list_footer_loading_text">加载中&#8230;</string>
+    <string name="drop_down_list_footer_no_more_text">无更多信息</string>
 </resources>

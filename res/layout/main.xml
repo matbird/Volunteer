@@ -20,7 +20,7 @@
             android:layout_height="40.0dip"
             android:layout_weight="1.0" >
 
-            <com.tiger.quicknews.wedget.ColumnHorizontalScrollView
+            <net.yigong.wedget.ColumnHorizontalScrollView
                 android:id="@+id/mColumnHorizontalScrollView"
                 android:layout_width="match_parent"
                 android:layout_height="40.0dip"
@@ -35,7 +35,7 @@
                     android:orientation="horizontal"
                     android:paddingLeft="10.0dip"
                     android:paddingRight="10.0dip" />
-            </com.tiger.quicknews.wedget.ColumnHorizontalScrollView>
+            </net.yigong.wedget.ColumnHorizontalScrollView>
 
             <ImageView
                 android:id="@+id/shade_left"

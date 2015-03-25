@@ -1,6 +1,11 @@
 
 package net.yigong.wedget.slidemenu;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import net.yigong.wedget.slidemenu.SlidingMenu.OnClosedListener;
+import net.yigong.wedget.slidemenu.SlidingMenu.OnOpenedListener;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Rect;
@@ -23,13 +28,6 @@ import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.animation.Interpolator;
 import android.widget.Scroller;
-
-
-import java.util.ArrayList;
-import java.util.List;
-
-import net.yigong.wedget.slidemenu.SlidingMenu.OnClosedListener;
-import net.yigong.wedget.slidemenu.SlidingMenu.OnOpenedListener;
 
 //import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu.OnCloseListener;
 //import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu.OnOpenListener;

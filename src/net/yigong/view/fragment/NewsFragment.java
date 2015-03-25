@@ -6,10 +6,21 @@ import java.util.HashMap;
 import java.util.List;
 
 import net.yigong.R;
+import net.yigong.adapter.CardsAnimationAdapter;
+import net.yigong.adapter.NewAdapter;
+import net.yigong.bean.NewModle;
 import net.yigong.http.HttpUtil;
 import net.yigong.http.Url;
+import net.yigong.http.json.NewListJson;
 import net.yigong.utils.StringUtils;
 import net.yigong.view.activity.BaseActivity;
+import net.yigong.view.initview.InitView;
+import net.yigong.wedget.swipelistview.SwipeListView;
+import net.yigong.wedget.viewimage.Animations.DescriptionAnimation;
+import net.yigong.wedget.viewimage.Animations.SliderLayout;
+import net.yigong.wedget.viewimage.SliderTypes.BaseSliderView;
+import net.yigong.wedget.viewimage.SliderTypes.BaseSliderView.OnSliderClickListener;
+import net.yigong.wedget.viewimage.SliderTypes.TextSliderView;
 
 import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.AfterViews;
@@ -19,15 +30,19 @@ import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ItemClick;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ProgressBar;
 
-@EFragment(R.layout.activity_main)
+import com.nhaarman.listviewanimations.swinginadapters.AnimationAdapter;
+
+@EFragment(R.layout.fragment_main)
 public class NewsFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener,
         OnSliderClickListener {
     protected SliderLayout mDemoSlider;
@@ -157,7 +172,7 @@ public class NewsFragment extends BaseFragment implements SwipeRefreshLayout.OnR
     }
 
     public void enterDetailActivity(NewModle newModle) {
-        Bundle bundle = new Bundle();
+        /*Bundle bundle = new Bundle();
         bundle.putSerializable("newModle", newModle);
         Class<?> class1;
         if (newModle.getImagesModle() != null && newModle.getImagesModle().getImgList().size() > 1) {
@@ -165,8 +180,7 @@ public class NewsFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         } else {
             class1 = DetailsActivity_.class;
         }
-        ((BaseActivity) getActivity()).openActivity(class1,
-                bundle, 0);
+        ((BaseActivity) getActivity()).openActivity(class1, bundle, 0);*/
         // Intent intent = new Intent(getActivity(), class1);
         // intent.putExtras(bundle);
         // IntentUtils.startPreviewActivity(getActivity(), intent);
@@ -218,12 +232,12 @@ public class NewsFragment extends BaseFragment implements SwipeRefreshLayout.OnR
     @Override
     public void onResume() {
         super.onResume();
-        MobclickAgent.onPageStart("MainScreen"); // 统计页面
+//        MobclickAgent.onPageStart("MainScreen"); // 统计页面
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        MobclickAgent.onPageEnd("MainScreen");
+//        MobclickAgent.onPageEnd("MainScreen");
     }
 }

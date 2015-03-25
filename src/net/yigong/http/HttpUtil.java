@@ -37,7 +37,7 @@ public class HttpUtil {
         if (TextUtils.isEmpty(result)) {
             result = "";
         }
-
+        Log.i("test", "response------:"+result);
         return result;
     }
 
