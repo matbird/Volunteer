@@ -1,10 +1,12 @@
 package net.yigong.view.activity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import net.yigong.App;
 import net.yigong.R;
 import net.yigong.adapter.YiGongFragmentPagerAdapter;
+import net.yigong.bean.NoticeModle;
 import net.yigong.channel.ChannelItem;
 import net.yigong.channel.ChannelManage;
 import net.yigong.utils.BaseTools;
@@ -20,6 +22,11 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
+
+import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.listener.FindListener;
+import cn.bmob.v3.listener.SaveListener;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -38,7 +45,7 @@ import android.widget.TextView;
 
 @EActivity(R.layout.activity_main)
 public class MainActivity extends BaseActivity {
-//        Bmob.initialize(this, "fdea5c917238d80f14207bcfbb1e940b");
+        
 	/** 自定义HorizontalScrollView */
 	@ViewById(R.id.mColumnHorizontalScrollView)
 	protected ColumnHorizontalScrollView mColumnHorizontalScrollView;
@@ -90,6 +97,8 @@ public class MainActivity extends BaseActivity {
     	mItemWidth = mScreenWidth / 7;// 一个Item宽度为屏幕的1/7
     	userChannelLists = new ArrayList<ChannelItem>();
     	fragments = new ArrayList<Fragment>();
+    	
+    	Bmob.initialize(this, "fdea5c917238d80f14207bcfbb1e940b");
     }
     
     @AfterViews
@@ -122,6 +131,48 @@ public class MainActivity extends BaseActivity {
     	}else{
     		side_drawer.showMenu();
     	}
+    }
+    
+    @Click(R.id.button_more_columns)
+    protected void onMoreColumns(View view) {
+
+    	/*// add 
+    	NoticeModle notice = new NoticeModle();
+    	notice.setTitle("2015年海淀分盟第一次活动通知");
+    	notice.setAssistor_info("Tom phone:111 QQ:000");
+    	notice.setManager_info("Leon phone:111 QQ:000");
+    	notice.setPoint(1);
+    	notice.setStatus(1);
+    	notice.setTime("周六 2015年3月28日 上午8：40到11：30");
+    	notice.setEnd_time("2015.01.09 20:00");
+    	notice.setNumber(25);
+    	notice.setPromulgator_info("Laowang");
+    	notice.setImage_url("xxx");
+    	notice.setSign_style("Tom+海淀+玉福+5+");
+    	
+    	notice.save(this, new SaveListener() {
+			@Override
+			public void onSuccess() {
+				MainActivity.this.showCustomToast("成功");
+			}
+			@Override
+			public void onFailure(int arg0, String arg1) {
+				MainActivity.this.showCustomToast("失败："+arg1);
+			}
+		});*/
+    	
+    	/*// find
+    	BmobQuery<NoticeModle> query = new BmobQuery<NoticeModle>();
+    	query.findObjects(this, new FindListener<NoticeModle>() {
+			@Override
+			public void onSuccess(List<NoticeModle> list) {
+				MainActivity.this.showCustomToast("成功:"+list.get(0).getTitle());
+			}
+			@Override
+			public void onError(int arg0, String arg1) {
+				MainActivity.this.showCustomToast("失败："+arg0+arg1);
+			}
+		});*/
     }
     
     /**
