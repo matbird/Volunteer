@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="area_array">
+        <item >玉福敬老院</item>
+        <item >千禾敬老院</item>
+        <item >小桔灯</item>
+        <item >康纳州</item>
+        <item >漂亮妈妈</item>
+        <item >天使之家</item>
+    </string-array>
+</resources>

@@ -85,7 +85,7 @@
                 android:layout_gravity="center"
                 android:textSize="20sp"
                 android:textColor="@color/white"
-                android:text="新闻快讯"/>
+                android:text="Volunteer"/>
         </FrameLayout>
 
 

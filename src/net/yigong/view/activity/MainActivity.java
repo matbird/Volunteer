@@ -10,6 +10,7 @@ import net.yigong.bean.NoticeModle;
 import net.yigong.channel.ChannelItem;
 import net.yigong.channel.ChannelManage;
 import net.yigong.utils.BaseTools;
+import net.yigong.view.fragment.HomeFragment_;
 import net.yigong.view.fragment.NewsFragment_;
 import net.yigong.view.initview.SlidingMenuView;
 import net.yigong.view.ui.LeftView;
@@ -135,13 +136,15 @@ public class MainActivity extends BaseActivity {
     
     @Click(R.id.button_more_columns)
     protected void onMoreColumns(View view) {
-
+    	
+    	showProgressDialog();
+    	
     	/*// add 
     	NoticeModle notice = new NoticeModle();
     	notice.setTitle("2015年海淀分盟第一次活动通知");
-    	notice.setAssistor_info("Tom phone:111 QQ:000");
-    	notice.setManager_info("Leon phone:111 QQ:000");
-    	notice.setPoint(1);
+    	notice.setAssistor_info("山大王");
+    	notice.setManager_info("刘老头");
+    	notice.setPoint(4);
     	notice.setStatus(1);
     	notice.setTime("周六 2015年3月28日 上午8：40到11：30");
     	notice.setEnd_time("2015.01.09 20:00");
@@ -259,10 +262,10 @@ public class MainActivity extends BaseActivity {
     }
     
     public Fragment initFragment(String channelName) {
-        if (channelName.equals("头条")) {
-            newfragment = new NewsFragment_();
+        if (channelName.equals("活动")) {
+            newfragment = new HomeFragment_();
         } 
-        else if (channelName.equals("足球")) {
+        else if (channelName.equals("新闻")) {
             newfragment = new NewsFragment_();
         } 
         
