@@ -2,7 +2,10 @@ package net.yigong.bean;
 
 import java.io.Serializable;
 
+import com.bmob.BmobProFile;
+
 import cn.bmob.v3.BmobObject;
+import cn.bmob.v3.datatype.BmobFile;
 
 public class NoticeModle extends BmobObject implements Serializable{
 
@@ -23,7 +26,7 @@ public class NoticeModle extends BmobObject implements Serializable{
 	private int status; // 活动状态 1.招募中 2.活动中 3.已结束
 	private String bak_content;
 	private String image_url;
-	
+
 	public NoticeModle(){
 	}
 	

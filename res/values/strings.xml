@@ -20,4 +20,13 @@
    <string name="drop_down_list_footer_default_text"></string>
     <string name="drop_down_list_footer_loading_text">加载中&#8230;</string>
     <string name="drop_down_list_footer_no_more_text">无更多信息</string>
+    
+  <string name="content_desc_pinned_downloaded">Pinned to device and downloaded</string>
+  <string name="content_desc_pinned_downloading">Pinned to device and downloading</string>
+  <string name="content_desc_pinned_not_downloaded">Pinned to device and waiting to download
+  </string>
+
+  <string name="content_desc_unpinned_downloaded">Temporarily downloaded</string>
+  <string name="content_desc_unpinned_downloading">Temporarily downloading</string>
+  <string name="content_desc_unpinned_not_downloaded">Not downloaded</string>
 </resources>

@@ -1,5 +1,6 @@
 package net.yigong.view.activity;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,16 +25,29 @@ import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
+import com.bmob.BTPFileResponse;
+import com.bmob.BmobProFile;
+import com.bmob.btp.callback.UploadListener;
+
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.SaveListener;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -43,6 +57,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 @EActivity(R.layout.activity_main)
 public class MainActivity extends BaseActivity {
@@ -137,9 +152,7 @@ public class MainActivity extends BaseActivity {
     @Click(R.id.button_more_columns)
     protected void onMoreColumns(View view) {
     	
-    	showProgressDialog();
-    	
-    	/*// add 
+    	// add 
     	NoticeModle notice = new NoticeModle();
     	notice.setTitle("2015年海淀分盟第一次活动通知");
     	notice.setAssistor_info("山大王");
@@ -162,7 +175,7 @@ public class MainActivity extends BaseActivity {
 			public void onFailure(int arg0, String arg1) {
 				MainActivity.this.showCustomToast("失败："+arg1);
 			}
-		});*/
+		});
     	
     	/*// find
     	BmobQuery<NoticeModle> query = new BmobQuery<NoticeModle>();
@@ -176,6 +189,54 @@ public class MainActivity extends BaseActivity {
 				MainActivity.this.showCustomToast("失败："+arg0+arg1);
 			}
 		});*/
+    	
+    	/*String path = "/storage/emulated/0/Pictures/Screenshots/Screenshot_2015-03-19-14-07-33.jpeg";
+    	BTPFileResponse response = BmobProFile.getInstance(MainActivity.this).upload(path, new UploadListener() {
+
+            @Override
+            public void onSuccess(String fileName,String url) {
+                // TODO Auto-generated method stub
+//                dialog.dismiss();
+//                showToast("文件已上传成功："+fileName);
+            	MainActivity.this.showCustomToast("成功："+url);
+            	String fileUrl = BmobProFile.getInstance(MainActivity.this).signURL(fileName, url, "1160f1b6deb0d0691a852fc32187ab0a", 0, null);
+            	//                                         signURL(String fileName,String fileUrl,String accessKey,long effectTime,String secretKey)
+            	Log.i("test","成功："+fileUrl);
+            }
+
+            @Override
+            public void onProgress(int ratio) {
+                // TODO Auto-generated method stub
+//                BmobLog.i("MainActivity -onProgress :"+ratio);
+            	Log.i("test", "progress:---->"+ratio);
+            }
+
+            @Override
+            public void onError(int statuscode, String errormsg) {
+                // TODO Auto-generated method stub
+//                showToast("上传出错："+errormsg);
+            	MainActivity.this.showCustomToast("失败："+statuscode+"  msg"+errormsg);
+            	Log.i("test", "失败："+statuscode+"  msg"+errormsg);
+            }
+        });*/
+    	
+    	/*CharSequence[] items = {"相册", "相机"};    
+    	   new AlertDialog.Builder(this)  
+    	    .setTitle("选择图片来源")  
+    	    .setItems(items, new DialogInterface.OnClickListener() {  
+    	        public void onClick(DialogInterface dialog, int which) {  
+    	            if( which == 0 ){  
+    	                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);  
+    	                intent.addCategory(Intent.CATEGORY_OPENABLE);  
+    	                intent.setType("image/*");  
+    	                startActivityForResult(Intent.createChooser(intent, "选择图片"), 0);   
+    	            }else{  
+    	                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);    
+    	                startActivityForResult(intent, 1);    
+    	            }  
+    	        }  
+    	    })  
+    	    .create().show();   */
     }
     
     /**
@@ -393,6 +454,25 @@ public class MainActivity extends BaseActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        
+        if(resultCode == RESULT_OK){  
+            Uri uri = data.getData();   
+            String [] proj={MediaStore.Images.Media.DATA};  
+            Cursor cursor = managedQuery( uri,  
+                    proj,                 // Which columns to return  
+                    null,       // WHERE clause; which rows to return (all rows)  
+                    null,       // WHERE clause selection arguments (none)  
+                    null);                 // Order-by clause (ascending by name)  
+              
+            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);  
+            cursor.moveToFirst();  
+              
+            String path = cursor.getString(column_index);  
+            Bitmap bmp = BitmapFactory.decodeFile(path);  
+            Log.i("test", "the path is :" + path);  
+        }else{  
+            Toast.makeText(this, "请重新选择图片", Toast.LENGTH_SHORT).show();  
+        }  
     }
 
     /**

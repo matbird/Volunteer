@@ -14,6 +14,8 @@ import net.yigong.http.Url;
 import net.yigong.http.json.NewListJson;
 import net.yigong.utils.StringUtils;
 import net.yigong.view.activity.BaseActivity;
+import net.yigong.view.activity.DetailsActivity_;
+import net.yigong.view.activity.ImageDetailActivity_;
 import net.yigong.view.initview.InitView;
 import net.yigong.wedget.swipelistview.SwipeListView;
 import net.yigong.wedget.viewimage.Animations.DescriptionAnimation;
@@ -172,15 +174,16 @@ public class NewsFragment extends BaseFragment implements SwipeRefreshLayout.OnR
     }
 
     public void enterDetailActivity(NewModle newModle) {
-        /*Bundle bundle = new Bundle();
+        Bundle bundle = new Bundle();
         bundle.putSerializable("newModle", newModle);
         Class<?> class1;
         if (newModle.getImagesModle() != null && newModle.getImagesModle().getImgList().size() > 1) {
-            class1 = ImageDetailActivity_.class;
+//            class1 = ImageDetailActivity_.class;
+        	class1 = ImageDetailActivity_.class;
         } else {
             class1 = DetailsActivity_.class;
         }
-        ((BaseActivity) getActivity()).openActivity(class1, bundle, 0);*/
+        ((BaseActivity) getActivity()).openActivity(class1, bundle, 0);
         // Intent intent = new Intent(getActivity(), class1);
         // intent.putExtras(bundle);
         // IntentUtils.startPreviewActivity(getActivity(), intent);
