@@ -34,6 +34,9 @@
         <activity android:name="net.yigong.view.activity.DetailsActivity_" 
             android:theme="@style/SlideAppTheme"/>
         <activity android:name="net.yigong.view.activity.ImageDetailActivity_" />
+        
+        <activity android:name="net.yigong.view.activity.LoginActivity_" />
+        <activity android:name="net.yigong.view.activity.RegisterActivity_" />
     </application>
 
 </manifest>

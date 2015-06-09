@@ -96,7 +96,7 @@ public class ProgressPieView extends View {
         mText = a.getString(R.styleable.ProgressPieView_android_text);
 
         mShowStroke = a.getBoolean(R.styleable.ProgressPieView_showStroke, mShowStroke);
-        mShowText = a.getBoolean(R.styleable.ProgressPieView_showText, mShowText);
+        mShowText = a.getBoolean(R.styleable.ProgressPieView_showText1, mShowText);
         mImage = a.getDrawable(R.styleable.ProgressPieView_image);
 
         int backgroundColor = res.getColor(R.color.default_background_color);

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:floatlabel="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <include layout="@layout/main_head" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dip"
+            android:layout_marginRight="20dip"
+            android:layout_marginTop="10dip"
+            android:focusableInTouchMode="true"
+            android:hint="请输入你的昵称"
+            app:met_baseColor="#606060"
+            app:met_clearButton="true"
+            app:met_errorColor="#ff0000"
+            app:met_floatingLabel="normal"
+            app:met_floatingLabelTextColor="#6c6c6c"
+            app:met_helperText="用于登录"
+            app:met_helperTextColor="#6c6c6c"
+            app:met_maxCharacters="5"
+            app:met_primaryColor="#2196F3"
+            app:met_textColor="#343539"
+            app:met_textColorHint="#6c6c6c"
+            app:met_underlineColor="#003587" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dip"
+            android:layout_marginRight="20dip"
+            android:layout_marginTop="10dip"
+            android:focusableInTouchMode="true"
+            android:hint="请输入你的真实姓名"
+            app:met_baseColor="#606060"
+            app:met_clearButton="true"
+            app:met_errorColor="#ff0000"
+            app:met_floatingLabel="normal"
+            app:met_floatingLabelTextColor="#6c6c6c"
+            app:met_helperText="用于信息审核"
+            app:met_helperTextColor="#6c6c6c"
+            app:met_maxCharacters="5"
+            app:met_primaryColor="#2196F3"
+            app:met_textColor="#343539"
+            app:met_textColorHint="#6c6c6c"
+            app:met_underlineColor="#003587" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dip"
+            android:layout_marginRight="20dip"
+            android:layout_marginTop="10dip"
+            android:focusableInTouchMode="true"
+            android:hint="请输入你的QQ号"
+            app:met_baseColor="#606060"
+            app:met_clearButton="true"
+            app:met_errorColor="#ff0000"
+            app:met_floatingLabel="normal"
+            app:met_floatingLabelTextColor="#6c6c6c"
+            app:met_helperText="用于信息审核"
+            app:met_helperTextColor="#6c6c6c"
+            app:met_maxCharacters="5"
+            app:met_primaryColor="#2196F3"
+            app:met_textColor="#343539"
+            app:met_textColorHint="#6c6c6c"
+            app:met_underlineColor="#003587" />
+
+        <com.marvinlabs.widget.floatinglabel.itempicker.FloatingLabelItemPicker
+            android:id="@+id/picker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dip"
+            android:layout_marginRight="20dip"
+            android:layout_marginTop="10dip"
+            android:focusableInTouchMode="true"
+            floatlabel:flw_floatOnFocus="false"
+            floatlabel:flw_labelText="请选择分盟" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dip"
+            android:layout_marginRight="20dip"
+            android:layout_marginTop="10dip"
+            android:focusableInTouchMode="true"
+            android:hint="请输入你的密码"
+            app:met_baseColor="#606060"
+            app:met_clearButton="true"
+            app:met_errorColor="#ff0000"
+            app:met_floatingLabel="normal"
+            app:met_floatingLabelTextColor="#6c6c6c"
+            app:met_helperText="密码需要六位以上哦"
+            app:met_helperTextColor="#6c6c6c"
+            app:met_maxCharacters="5"
+            app:met_primaryColor="#2196F3"
+            app:met_textColor="#343539"
+            app:met_textColorHint="#6c6c6c"
+            app:met_underlineColor="#003587" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dip"
+            android:layout_marginRight="20dip"
+            android:layout_marginTop="10dip"
+            android:focusableInTouchMode="true"
+            android:hint="请再次输入你的密码"
+            app:met_baseColor="#606060"
+            app:met_clearButton="true"
+            app:met_errorColor="#ff0000"
+            app:met_floatingLabel="normal"
+            app:met_floatingLabelTextColor="#6c6c6c"
+            app:met_helperText="确认密码"
+            app:met_helperTextColor="#6c6c6c"
+            app:met_maxCharacters="5"
+            app:met_primaryColor="#2196F3"
+            app:met_textColor="#343539"
+            app:met_textColorHint="#6c6c6c"
+            app:met_underlineColor="#003587" />
+
+        <com.dd.processbutton.iml.ActionProcessButton
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="15dip"
+            android:layout_marginRight="15dip"
+            android:layout_marginTop="15dp"
+            android:text="注    册"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            custom:pb_colorComplete="@color/green_complete"
+            custom:pb_colorNormal="@color/blue_normal"
+            custom:pb_colorPressed="@color/blue_pressed"
+            custom:pb_colorProgress="@color/purple_progress"
+            custom:pb_textComplete="注册成功"
+            custom:pb_textError="重新注册"
+            custom:pb_textProgress="正在注册..." />
+    </LinearLayout>
+
+</ScrollView>

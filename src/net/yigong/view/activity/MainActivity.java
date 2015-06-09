@@ -1,12 +1,11 @@
 package net.yigong.view.activity;
 
-import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
 
 import net.yigong.App;
 import net.yigong.R;
 import net.yigong.adapter.YiGongFragmentPagerAdapter;
+import net.yigong.bean.NewModle;
 import net.yigong.bean.NoticeModle;
 import net.yigong.channel.ChannelItem;
 import net.yigong.channel.ChannelManage;
@@ -25,24 +24,13 @@ import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
-import com.bmob.BTPFileResponse;
-import com.bmob.BmobProFile;
-import com.bmob.btp.callback.UploadListener;
-
-import cn.bmob.v3.Bmob;
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.datatype.BmobFile;
-import cn.bmob.v3.listener.FindListener;
-import cn.bmob.v3.listener.SaveListener;
-
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -58,6 +46,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import cn.bmob.v3.Bmob;
+import cn.bmob.v3.listener.SaveListener;
 
 @EActivity(R.layout.activity_main)
 public class MainActivity extends BaseActivity {
@@ -152,7 +142,8 @@ public class MainActivity extends BaseActivity {
     @Click(R.id.button_more_columns)
     protected void onMoreColumns(View view) {
     	
-    	// add 
+    	openActivity(LoginActivity_.class);
+    	/*// add 
     	NoticeModle notice = new NoticeModle();
     	notice.setTitle("2015年海淀分盟第一次活动通知");
     	notice.setAssistor_info("山大王");
@@ -175,7 +166,7 @@ public class MainActivity extends BaseActivity {
 			public void onFailure(int arg0, String arg1) {
 				MainActivity.this.showCustomToast("失败："+arg1);
 			}
-		});
+		});*/
     	
     	/*// find
     	BmobQuery<NoticeModle> query = new BmobQuery<NoticeModle>();

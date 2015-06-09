@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/activity_bg_color"
+    android:orientation="vertical" >
+
+    <include layout="@layout/main_head" />
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dip"
+        android:layout_marginRight="20dip"
+        android:layout_marginTop="30dip"
+        android:focusableInTouchMode="true"
+        android:hint="请输入你的账号"
+        app:met_baseColor="#606060"
+        app:met_errorColor="#ff0000"
+        app:met_floatingLabel="normal"
+        app:met_floatingLabelTextColor="#6c6c6c"
+        app:met_helperText="也可以输入你的QQ号哦"
+        app:met_helperTextColor="#6c6c6c"
+        app:met_maxCharacters="5"
+        app:met_primaryColor="#2196F3"
+        app:met_textColorHint="#6c6c6c"
+        app:met_underlineColor="#003587"
+        app:met_textColor="#343539"
+        app:met_clearButton="true" />
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dip"
+        android:layout_marginRight="20dip"
+        android:layout_marginTop="10dip"
+        android:focusableInTouchMode="true"
+        android:inputType="textPassword"
+        android:hint="请输入您的密码"
+        app:met_baseColor="#606060"
+        app:met_errorColor="#ff0000"
+        app:met_floatingLabel="normal"
+        app:met_floatingLabelTextColor="#6c6c6c"
+        app:met_helperText="密码提示"
+        app:met_helperTextColor="#6c6c6c"
+        app:met_minCharacters="6"
+        app:met_primaryColor="#2196F3"
+        app:met_textColorHint="#6c6c6c"
+        app:met_underlineColor="#003587"
+        app:met_textColor="#343539"
+        app:met_clearButton="true" />
+
+    <com.dd.processbutton.iml.ActionProcessButton
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="15dip"
+        android:layout_marginRight="15dip"
+        android:layout_marginTop="15dp"
+        android:text="登   录"
+        android:textSize="20sp"
+        android:textColor="#ffffff"
+        custom:pb_colorComplete="@color/green_complete"
+        custom:pb_colorNormal="@color/blue_normal"
+        custom:pb_colorPressed="@color/blue_pressed"
+        custom:pb_colorProgress="@color/purple_progress"
+        custom:pb_textComplete="登陆成功"
+        custom:pb_textProgress="正在登陆..." 
+        custom:pb_textError="重新登陆"/>
+    
+    
+</LinearLayout>
