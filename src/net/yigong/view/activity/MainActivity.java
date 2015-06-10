@@ -1,5 +1,6 @@
 package net.yigong.view.activity;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import net.yigong.App;
@@ -7,6 +8,7 @@ import net.yigong.R;
 import net.yigong.adapter.YiGongFragmentPagerAdapter;
 import net.yigong.bean.NewModle;
 import net.yigong.bean.NoticeModle;
+import net.yigong.bmob.bean.ServiceObject;
 import net.yigong.channel.ChannelItem;
 import net.yigong.channel.ChannelManage;
 import net.yigong.utils.BaseTools;
@@ -47,7 +49,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import cn.bmob.v3.Bmob;
+import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.listener.SaveListener;
+import cn.bmob.v3.listener.UploadFileListener;
 
 @EActivity(R.layout.activity_main)
 public class MainActivity extends BaseActivity {
@@ -141,8 +145,38 @@ public class MainActivity extends BaseActivity {
     
     @Click(R.id.button_more_columns)
     protected void onMoreColumns(View view) {
+    	String picPath = "/storage/emulated/0/test.png";
+    	BmobFile bmobFile = new BmobFile(new File(picPath));
+    	bmobFile.uploadblock(this, new UploadFileListener() {
+			@Override
+			public void onSuccess() {
+				showCustomToast("success.");
+			}
+			
+			@Override
+			public void onFailure(int arg0, String arg1) {
+				showCustomToast("error:"+arg1+"  code:"+arg0);
+			}
+		});
     	
-    	openActivity(LoginActivity_.class);
+    	/*String picPath = "sdcard/test.png";
+    	BmobFile bmobFile = new BmobFile(new File(picPath));
+    	ServiceObject obj = new ServiceObject();
+    	obj.setName("王奶奶");
+    	obj.setPic(bmobFile);
+    	obj.save(this, new SaveListener() {
+			@Override
+			public void onSuccess() {
+				showCustomToast("success.");
+			}
+			@Override
+			public void onFailure(int arg0, String arg1) {
+				showCustomToast("error:"+arg1+"  code:"+arg0);
+			}
+		});*/
+    	
+    	
+//    	openActivity(LoginActivity_.class);
     	/*// add 
     	NoticeModle notice = new NoticeModle();
     	notice.setTitle("2015年海淀分盟第一次活动通知");

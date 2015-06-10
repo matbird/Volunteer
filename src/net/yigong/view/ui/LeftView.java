@@ -3,6 +3,7 @@ package net.yigong.view.ui;
 
 import net.yigong.R;
 import net.yigong.view.activity.BaseActivity;
+import net.yigong.view.activity.MoreActivity_;
 import net.yigong.view.initview.SlidingMenuView;
 
 import org.androidannotations.annotations.Click;
@@ -48,7 +49,7 @@ public class LeftView extends LinearLayout {
 
     @Click(R.id.more)
     public void enterMore(View view) {
-//        context.openActivity(MoreActivity_.class);
+        context.openActivity(MoreActivity_.class);
         isShow();
     }
 
