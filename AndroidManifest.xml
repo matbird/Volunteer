@@ -39,6 +39,7 @@
         <activity android:name="net.yigong.view.activity.LoginActivity_" />
         <activity android:name="net.yigong.view.activity.RegisterActivity_" />
         <activity android:name="net.yigong.view.activity.MoreActivity_" />
+        <activity android:name="net.yigong.view.activity.AddPlaceActivity_" />
 
         <!-- 友盟统计 -->
         <meta-data

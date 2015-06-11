@@ -6,12 +6,12 @@ import java.util.ArrayList;
 import net.yigong.App;
 import net.yigong.R;
 import net.yigong.adapter.YiGongFragmentPagerAdapter;
-import net.yigong.bean.NewModle;
-import net.yigong.bean.NoticeModle;
-import net.yigong.bmob.bean.ServiceObject;
+import net.yigong.bmob.bean.YGUser;
 import net.yigong.channel.ChannelItem;
 import net.yigong.channel.ChannelManage;
 import net.yigong.utils.BaseTools;
+import net.yigong.utils.LogUtils;
+import net.yigong.utils.Options;
 import net.yigong.view.fragment.HomeFragment_;
 import net.yigong.view.fragment.NewsFragment_;
 import net.yigong.view.initview.SlidingMenuView;
@@ -24,7 +24,11 @@ import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.OnActivityResult;
 import org.androidannotations.annotations.ViewById;
+
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -32,7 +36,6 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -49,8 +52,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobFile;
-import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UploadFileListener;
 
 @EActivity(R.layout.activity_main)
@@ -74,6 +77,9 @@ public class MainActivity extends BaseActivity {
     @ViewById(R.id.shade_right)
     protected ImageView shade_right;
     protected LeftView mLeftView;
+    
+    @ViewById(R.id.top_head)
+    protected ImageView top_head;
 
     protected SlidingMenu side_drawer;
     private YiGongFragmentPagerAdapter mAdapetr;
@@ -83,6 +89,9 @@ public class MainActivity extends BaseActivity {
     private double back_pressed;
 
     public static boolean isChange = false;
+    
+    protected ImageLoader imageLoader = ImageLoader.getInstance();
+	protected DisplayImageOptions options;
     
     /** 屏幕宽度 */
     private int mScreenWidth = 0;
@@ -108,6 +117,7 @@ public class MainActivity extends BaseActivity {
     	userChannelLists = new ArrayList<ChannelItem>();
     	fragments = new ArrayList<Fragment>();
     	
+    	options = Options.getHeadPhotoOptions();
     	Bmob.initialize(this, "fdea5c917238d80f14207bcfbb1e940b");
     }
     
@@ -117,6 +127,12 @@ public class MainActivity extends BaseActivity {
 			initSlideMenu();
 			initViewPager();
 			setChangelView();
+			initLeftViewAndTopHead();
+			/*YGUser user = BmobUser.getCurrentUser(this, YGUser.class);
+	    	if(user != null){
+	    		LogUtils.i("test1", user.getPhoto().getFileUrl(this)+"");
+	    		imageLoader.displayImage(user.getPhoto().getFileUrl(this) == null ? "" : user.getPhoto().getFileUrl(this),top_head,options);
+	    	}*/
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -145,7 +161,7 @@ public class MainActivity extends BaseActivity {
     
     @Click(R.id.button_more_columns)
     protected void onMoreColumns(View view) {
-    	String picPath = "/storage/emulated/0/test.png";
+    	/*String picPath = "/storage/emulated/0/ShareSDK/com.nhzw.bingdu/cache/images/aed0f99ef230f229b0f8ea8a8084df8e.png";
     	BmobFile bmobFile = new BmobFile(new File(picPath));
     	bmobFile.uploadblock(this, new UploadFileListener() {
 			@Override
@@ -157,9 +173,9 @@ public class MainActivity extends BaseActivity {
 			public void onFailure(int arg0, String arg1) {
 				showCustomToast("error:"+arg1+"  code:"+arg0);
 			}
-		});
+		});*/
     	
-    	/*String picPath = "sdcard/test.png";
+    	/*String picPath = "/storage/emulated/0/ShareSDK/com.nhzw.bingdu/cache/images/aed0f99ef230f229b0f8ea8a8084df8e.png";
     	BmobFile bmobFile = new BmobFile(new File(picPath));
     	ServiceObject obj = new ServiceObject();
     	obj.setName("王奶奶");
@@ -176,7 +192,7 @@ public class MainActivity extends BaseActivity {
 		});*/
     	
     	
-//    	openActivity(LoginActivity_.class);
+    	openActivity(LoginActivity_.class);
     	/*// add 
     	NoticeModle notice = new NoticeModle();
     	notice.setTitle("2015年海淀分盟第一次活动通知");
@@ -264,6 +280,20 @@ public class MainActivity extends BaseActivity {
     	    .create().show();   */
     }
     
+    /**
+     * 初始化左侧栏的用户头像，昵称以及标题栏左边的图片
+     */
+    private void initLeftViewAndTopHead(){
+    	YGUser user = BmobUser.getCurrentUser(this, YGUser.class);
+    	if(user == null){
+    		mLeftView.getNicknameView().setText("未登录");
+    	}else{
+    		mLeftView.getNicknameView().setText(user.getUsername());
+    		imageLoader.displayImage(user.getPhoto().getFileUrl(this) == null ? "" : user.getPhoto().getFileUrl(this), mLeftView.getPhotoView(),options);
+    		imageLoader.displayImage(user.getPhoto().getFileUrl(this) == null ? "" : user.getPhoto().getFileUrl(this),top_head,options);
+    	}
+    	
+    }
     /**
      * 当栏目项发生变化时候调用
      */
@@ -467,7 +497,7 @@ public class MainActivity extends BaseActivity {
         }
     }
 
-    @Override
+   /* @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         try {
             if (isChange) {
@@ -498,6 +528,13 @@ public class MainActivity extends BaseActivity {
         }else{  
             Toast.makeText(this, "请重新选择图片", Toast.LENGTH_SHORT).show();  
         }  
+    }*/
+    
+    @OnActivityResult(1000)
+    void onResult(int resultCode, Intent data){
+    	if(resultCode == 1001){
+    		initLeftViewAndTopHead();
+    	}
     }
 
     /**

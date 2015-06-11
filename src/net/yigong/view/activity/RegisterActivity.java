@@ -1,7 +1,7 @@
 package net.yigong.view.activity;
 
 import net.yigong.R;
-import net.yigong.bmob.bean.VoUser;
+import net.yigong.bmob.bean.YGUser;
 import net.yigong.utils.Utils;
 
 import org.androidannotations.annotations.AfterViews;
@@ -125,7 +125,7 @@ public class RegisterActivity extends BaseActivity {
 		
 		String md5_password = Utils.encryptWithMD5(password);
 		
-		VoUser user = new VoUser();
+		YGUser user = new YGUser();
 		user.setUsername(nickname);
 		user.setPassword(md5_password);
 		user.setRealname(realname);

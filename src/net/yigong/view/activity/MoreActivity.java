@@ -78,6 +78,11 @@ public class MoreActivity extends BaseActivity {
         setCacheStr("MoreActivity", "MoreActivity");
 //        WelcomeActivity_.intent(this).start();
     }
+    
+    @Click(R.id.add_place)
+    public void addPlace(){
+    	openActivity(AddPlaceActivity_.class);
+    }
 
     @Override
     public void onResume() {

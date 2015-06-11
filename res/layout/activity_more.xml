@@ -69,6 +69,18 @@
         android:layout_height="1dp"
         android:visibility="visible"
         android:background="@drawable/separator" />
+    
+    <TextView
+        android:id="@+id/add_place"
+        style="@style/my_itme"
+        android:visibility="visible"
+        android:text="添加活动点" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:visibility="visible"
+        android:background="@drawable/separator" />
 
 </LinearLayout>
     

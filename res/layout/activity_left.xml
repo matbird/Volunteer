@@ -4,33 +4,70 @@
     android:layout_height="match_parent"
     android:background="@drawable/biz_pc_main_bg"
     android:orientation="vertical" >
+    
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="72dip"
+        android:paddingLeft="35dip"
+        android:paddingRight="10.0dip" >
 
-        <Button
-            android:id="@+id/pics"
-            style="@style/item_left"
-            android:drawableLeft="@drawable/biz_navigation_tab_pics"
-            android:text="@string/pics" />
-        
-        <Button
-            android:id="@+id/video"
-            style="@style/item_left"
-            android:drawableLeft="@drawable/biz_navigation_tab_video"
-            android:text="@string/video" />
-        <Button
-             android:id="@+id/ties"
-            style="@style/item_left"
-            android:drawableLeft="@drawable/biz_navigation_tab_news"
-            android:visibility="gone"
-            android:text="@string/ties" />
-        <Button
-            android:id="@+id/tianqi"
-            style="@style/item_left"
-            android:drawableLeft="@drawable/biz_navigation_tab_read"
-            android:text="@string/tianqi" />
-        <Button
-            android:id="@+id/more"
-            style="@style/item_left"
-            android:drawableLeft="@drawable/biz_navigation_tab_ties"
-            android:text="@string/more" />
+        <ImageView
+            android:id="@+id/iv_photo"
+            android:layout_width="48dip"
+        	android:layout_height="48dip"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/bg_head"
+            android:padding="2.0dip"
+            android:src="@drawable/default_round_head"
+            android:scaleType="fitXY" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/nickname"
+        android:layout_width="wrap_content"
+        android:layout_height="28dip"
+        android:gravity="center_vertical"
+        android:paddingLeft="35dip"
+        android:text="未登录"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dip"
+        android:layout_marginLeft="35dip"
+        android:layout_marginTop="20dip"
+        android:background="@color/white" />
+
+    <Button
+        android:id="@+id/pics"
+        style="@style/item_left"
+        android:drawableLeft="@drawable/biz_navigation_tab_pics"
+        android:text="@string/pics" />
+
+    <Button
+        android:id="@+id/video"
+        style="@style/item_left"
+        android:drawableLeft="@drawable/biz_navigation_tab_video"
+        android:text="@string/video" />
+
+    <Button
+        android:id="@+id/ties"
+        style="@style/item_left"
+        android:drawableLeft="@drawable/biz_navigation_tab_news"
+        android:text="@string/ties"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/tianqi"
+        style="@style/item_left"
+        android:drawableLeft="@drawable/biz_navigation_tab_read"
+        android:text="@string/tianqi" />
+
+    <Button
+        android:id="@+id/more"
+        style="@style/item_left"
+        android:drawableLeft="@drawable/biz_navigation_tab_ties"
+        android:text="@string/more" />
 
 </LinearLayout>
