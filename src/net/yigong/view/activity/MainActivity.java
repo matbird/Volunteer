@@ -118,7 +118,6 @@ public class MainActivity extends BaseActivity {
     	fragments = new ArrayList<Fragment>();
     	
     	options = Options.getHeadPhotoOptions();
-    	Bmob.initialize(this, "fdea5c917238d80f14207bcfbb1e940b");
     }
     
     @AfterViews
@@ -192,7 +191,7 @@ public class MainActivity extends BaseActivity {
 		});*/
     	
     	
-    	openActivity(LoginActivity_.class);
+//    	openActivity(LoginActivity_.class);
     	/*// add 
     	NoticeModle notice = new NoticeModle();
     	notice.setTitle("2015年海淀分盟第一次活动通知");

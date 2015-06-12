@@ -1,9 +1,16 @@
 package net.yigong.bmob.bean;
 
+import java.io.Serializable;
+
+import cn.bmob.v3.BmobObject;
 import cn.bmob.v3.datatype.BmobFile;
 
-public class Place {
+public class Place extends BmobObject implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7488260947334640721L;
 	private YGUser author;
 	private String name;
 	private String address;

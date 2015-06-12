@@ -1,6 +1,7 @@
 package net.yigong.view.activity;
 
 import net.yigong.R;
+import net.yigong.bmob.bean.YGUser;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -10,6 +11,7 @@ import org.androidannotations.annotations.ViewById;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import cn.bmob.v3.BmobUser;
 
 import com.umeng.update.UmengUpdateAgent;
 import com.umeng.update.UmengUpdateListener;
@@ -56,7 +58,7 @@ public class MoreActivity extends BaseActivity {
                 switch (updateStatus) {
                     case UpdateStatus.Yes: // 发现最新版
                         UmengUpdateAgent.showUpdateDialog(MoreActivity.this, updateInfo);
-                        break;
+                        break;                
                     case UpdateStatus.No: // 已为最新版
                         mTextViewNewest.setVisibility(View.VISIBLE);
                         break;
@@ -81,9 +83,34 @@ public class MoreActivity extends BaseActivity {
     
     @Click(R.id.add_place)
     public void addPlace(){
-    	openActivity(AddPlaceActivity_.class);
+    	YGUser user = BmobUser.getCurrentUser(this, YGUser.class);
+    	if(user == null){
+    		showShortToast("未登录");
+    		return ;
+    	}else{
+    		if(user.getDegree() < 20){
+    			showShortToast("权限不够.");
+    		}else{
+    			openActivity(AddPlaceActivity_.class);
+    		}
+    	}
     }
 
+    @Click(R.id.add_object)
+    public void addObject(View v){
+    	YGUser user = BmobUser.getCurrentUser(this, YGUser.class);
+    	if(user == null){
+    		showShortToast("未登录");
+    		return ;
+    	}else{
+    		if(user.getDegree() < 0){
+    			showShortToast("权限不够.");
+    		}else{
+    			openActivity(AddObjectActivity_.class);
+    		}
+    	}
+    }
+    
     @Override
     public void onResume() {
         super.onResume();

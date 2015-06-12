@@ -8,16 +8,24 @@ import java.util.Date;
 
 import net.yigong.R;
 import net.yigong.bmob.bean.Place;
+import net.yigong.bmob.bean.ServiceObject;
 import net.yigong.bmob.bean.YGUser;
 import net.yigong.utils.LogUtils;
 import net.yigong.utils.MatCacheUtils;
 import net.yigong.utils.StringUtils;
 
+import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
-import org.androidannotations.annotations.OnActivityResult;
 import org.androidannotations.annotations.ViewById;
+
+import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.datatype.BmobFile;
+import cn.bmob.v3.listener.SaveListener;
+import cn.bmob.v3.listener.UploadFileListener;
+
+import com.rengwuxian.materialedittext.MaterialEditText;
 
 import android.content.ContentResolver;
 import android.content.Intent;
@@ -29,30 +37,23 @@ import android.graphics.Bitmap.Config;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.provider.MediaStore;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.datatype.BmobFile;
-import cn.bmob.v3.listener.SaveListener;
-import cn.bmob.v3.listener.UploadFileListener;
 
-import com.rengwuxian.materialedittext.MaterialEditText;
+@EActivity(R.layout.activity_addobject)
+public class AddObjectActivity extends BaseActivity{
 
-@EActivity(R.layout.activity_addplace)
-public class AddPlaceActivity extends BaseActivity{
-	
 	private static final int REQUEST_CODE_ALBUM = 1;
 	private static final int REQUEST_CODE_CAMERA = 2;
 	private static final String TAG = "test";
 	
 	String dateTime;
 	String targeturl = null;
-
+	private Place place;
+	
 	@ViewById(R.id.top_head)
 	protected ImageView top_head;
 	@ViewById(R.id.top_more)
@@ -60,14 +61,23 @@ public class AddPlaceActivity extends BaseActivity{
 	@ViewById(R.id.title_recent)
 	protected TextView title_recent;
 	
-	@ViewById(R.id.met_address)
-	protected MaterialEditText met_address;
-	@ViewById(R.id.met_title)
-	protected MaterialEditText met_title;
-	@ViewById(R.id.edit_descri)
-	protected EditText edit_descri;
-	@ViewById(R.id.edit_remark)
-	protected EditText edit_remark;
+	@ViewById(R.id.met_name)
+	protected MaterialEditText met_name;
+	@ViewById(R.id.met_gender)
+	protected MaterialEditText met_gender;
+	@ViewById(R.id.met_birth)
+	protected MaterialEditText met_birth;
+	@ViewById(R.id.met_roominfo)
+	protected MaterialEditText met_roominfo;
+	@ViewById(R.id.met_healthinfo)
+	protected MaterialEditText met_healthinfo;
+	@ViewById(R.id.met_hobby)
+	protected MaterialEditText met_hobby;
+	@ViewById(R.id.met_unlike)
+	protected MaterialEditText met_unlike;
+	@ViewById(R.id.met_remark)
+	protected MaterialEditText met_remark;
+	
 	@ViewById(R.id.take_layout)
 	protected LinearLayout take_layout;
 	@ViewById(R.id.open_layout)
@@ -76,6 +86,12 @@ public class AddPlaceActivity extends BaseActivity{
 	protected ImageView take_pic;
 	@ViewById(R.id.open_pic)
 	protected ImageView open_pic;
+	
+	
+	@AfterInject
+	void init(){
+		place = (Place) getIntent().getExtras().getSerializable("newModle");
+	}
 	
 	@AfterViews
 	void initViews(){
@@ -87,7 +103,7 @@ public class AddPlaceActivity extends BaseActivity{
 		top_head.setImageResource(R.drawable.mat_back);
 		top_more.setVisibility(View.VISIBLE);
 		top_more.setImageResource(R.drawable.ok);
-		title_recent.setText("添加活动点");
+		title_recent.setText("添加服务对象");
 	}
 	
 	@Click(R.id.top_head)
@@ -127,45 +143,72 @@ public class AddPlaceActivity extends BaseActivity{
 	}
 	
 	@Click(R.id.top_more)
-	protected void onAddPlace(View v){
-		String title = met_title.getText().toString().trim();
-		String address = met_address.getText().toString().trim();
-		String descri = edit_descri.getText().toString().trim();
-		String remark = edit_remark.getText().toString().trim();
+	protected void addObject(View v ){
+		String name = met_name.getText().toString().trim();
+		String gender = met_gender.getText().toString().trim();
+		String birth = met_birth.getText().toString().trim();
+		String roominfo = met_roominfo.getText().toString().trim();
+		String healthinfo = met_healthinfo.getText().toString().trim();
+		String hobby = met_hobby.getText().toString().trim();
+		String unlike = met_unlike.getText().toString().trim();
+		String remark = met_remark.getText().toString().trim();
 		
-		if(StringUtils.isEmpty(title)){
-			showShortToast("标题不能为空.");
+		if(StringUtils.isEmpty(name)){
+			showShortToast("名字不能为空.");
 			return ;
 		}
-		if(StringUtils.isEmpty(address)){
-			showShortToast("地址不能为空");
+		if(StringUtils.isEmpty(roominfo)){
+			showShortToast("位置不能为空");
 			return ;
 		}
-		if(StringUtils.isEmpty(descri)){
-			showShortToast("该活动点的注意事项不能为空");
+		if(StringUtils.isEmpty(healthinfo)){
+			showShortToast("健康状况不能为空");
 			return ;
 		}
 		
 		showProgressDialog();
-		if (targeturl == null) {
-			publishWithoutFigure(title, address, descri, remark, null);
-		} else {
-			publish(title, address, descri, remark);
+		
+		YGUser user = BmobUser.getCurrentUser(this, YGUser.class);
+		if(user == null){
+			showShortToast("您还没有登录");
+			dismissProgressDialog();
+			return ;
 		}
+		
+		ServiceObject obj = new ServiceObject();
+		obj.setAuthor(user);
+		obj.setLastEditor(user);
+		obj.setPlace(place);
+		obj.setName(name);
+		obj.setGender(gender+"");
+		obj.setBirthday(birth+"");
+		obj.setRoominfo(roominfo+"");
+		obj.setHeathinfo(healthinfo+"");
+		obj.setHobby(hobby+"");
+		obj.setUnlike(unlike+"");
+		obj.setRemark(remark+"");
+		obj.setStatus(0);
+		
+		if (targeturl == null) {
+//			publishWithoutFigure(obj, null);
+			showShortToast("必须要选择一张照片哦");
+			dismissProgressDialog();
+			return ;
+		} else {
+			publish(obj);
+		}
+		
 	}
 	
-	/*
-	 * 发表带图片
-	 */
-	private void publish(final String title,final String address,final String descri,final String remark) {
+	private void publish(final ServiceObject obj) {
 		final BmobFile figureFile = new BmobFile(new File(targeturl));
 
-		figureFile.upload(this, new UploadFileListener() {
+		figureFile.upload(this, new UploadFileListener() { 
 
 			@Override
 			public void onSuccess() {
-				LogUtils.i(TAG,"上传文件成功。" + figureFile.getFileUrl(AddPlaceActivity.this));
-				publishWithoutFigure(title, address, descri, remark, figureFile);
+				LogUtils.i(TAG,"上传文件成功。" + figureFile.getFileUrl(AddObjectActivity.this));
+				publishWithoutFigure(obj, figureFile);
 
 			}
 			@Override
@@ -182,26 +225,16 @@ public class AddPlaceActivity extends BaseActivity{
 
 	}
 
-	private void publishWithoutFigure(final String title,final String address,final String descri,final String remark,final BmobFile figureFile) {
-		YGUser user = BmobUser.getCurrentUser(this, YGUser.class);
-		if(user == null){
-			showShortToast("您还没有登录");
-			return ;
-		}
+	private void publishWithoutFigure(final ServiceObject obj,final BmobFile figureFile) {
 		
-		Place place = new Place();
-		place.setAuthor(user);
-		place.setAddress(address);
-		place.setName(title);
-		place.setDescri(descri);
-		place.setRemark(remark);
 		if(figureFile != null)
-			place.setImage(figureFile);
-		place.save(this, new SaveListener() {
+			obj.setImage(figureFile);
+		obj.save(this, new SaveListener() {
 			@Override
 			public void onSuccess() {
 				showShortToast("添加成功.");
 				dismissProgressDialog();
+				finish();
 			}
 			@Override
 			public void onFailure(int arg0, String arg1) {

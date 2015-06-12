@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/activity_bg_color"
+    android:orientation="vertical" >
+
+    <include layout="@layout/main_head" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/met_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:layout_marginTop="5dip"
+                android:focusableInTouchMode="true"
+                android:hint="请输入服务对象名字，例如：王爷爷"
+                app:met_baseColor="#606060"
+                app:met_clearButton="true"
+                app:met_errorColor="#ff0000"
+                app:met_floatingLabel="normal"
+                app:met_floatingLabelTextColor="#6c6c6c"
+                app:met_helperTextColor="#6c6c6c"
+                app:met_primaryColor="#2196F3"
+                app:met_textColor="#343539"
+                app:met_textColorHint="#6c6c6c"
+                app:met_underlineColor="#003587" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/met_gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/met_name"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:layout_marginTop="5dip"
+                android:focusableInTouchMode="true"
+                android:hint="请输入性别:男、女"
+                app:met_baseColor="#606060"
+                app:met_clearButton="true"
+                app:met_errorColor="#ff0000"
+                app:met_floatingLabel="normal"
+                app:met_floatingLabelTextColor="#6c6c6c"
+                app:met_helperTextColor="#6c6c6c"
+                app:met_primaryColor="#2196F3"
+                app:met_textColor="#343539"
+                app:met_textColorHint="#6c6c6c"
+                app:met_underlineColor="#003587" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/met_birth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/met_gender"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:layout_marginTop="5dip"
+                android:focusableInTouchMode="true"
+                android:hint="请输入生日：1950-01-01"
+                app:met_baseColor="#606060"
+                app:met_clearButton="true"
+                app:met_errorColor="#ff0000"
+                app:met_floatingLabel="normal"
+                app:met_floatingLabelTextColor="#6c6c6c"
+                app:met_helperTextColor="#6c6c6c"
+                app:met_primaryColor="#2196F3"
+                app:met_textColor="#343539"
+                app:met_textColorHint="#6c6c6c"
+                app:met_underlineColor="#003587" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/met_roominfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/met_birth"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:layout_marginTop="5dip"
+                android:focusableInTouchMode="true"
+                android:hint="请输入具体位置，例如：前院康乐园15号"
+                app:met_baseColor="#606060"
+                app:met_clearButton="true"
+                app:met_errorColor="#ff0000"
+                app:met_floatingLabel="normal"
+                app:met_floatingLabelTextColor="#6c6c6c"
+                app:met_helperTextColor="#6c6c6c"
+                app:met_primaryColor="#2196F3"
+                app:met_textColor="#343539"
+                app:met_textColorHint="#6c6c6c"
+                app:met_underlineColor="#003587" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/met_healthinfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/met_roominfo"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:layout_marginTop="5dip"
+                android:focusableInTouchMode="true"
+                android:hint="请输入健康状况，例如：腿脚有毛病"
+                app:met_baseColor="#606060"
+                app:met_clearButton="true"
+                app:met_errorColor="#ff0000"
+                app:met_floatingLabel="normal"
+                app:met_floatingLabelTextColor="#6c6c6c"
+                app:met_helperTextColor="#6c6c6c"
+                app:met_primaryColor="#2196F3"
+                app:met_textColor="#343539"
+                app:met_textColorHint="#6c6c6c"
+                app:met_underlineColor="#003587" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/met_hobby"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/met_healthinfo"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:layout_marginTop="5dip"
+                android:focusableInTouchMode="true"
+                android:hint="请输入兴趣爱好，例如：打麻将"
+                app:met_baseColor="#606060"
+                app:met_clearButton="true"
+                app:met_errorColor="#ff0000"
+                app:met_floatingLabel="normal"
+                app:met_floatingLabelTextColor="#6c6c6c"
+                app:met_helperTextColor="#6c6c6c"
+                app:met_primaryColor="#2196F3"
+                app:met_textColor="#343539"
+                app:met_textColorHint="#6c6c6c"
+                app:met_underlineColor="#003587" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/met_unlike"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/met_hobby"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:layout_marginTop="5dip"
+                android:focusableInTouchMode="true"
+                android:hint="请输入应该避免的地方，例如：不能吃甜食"
+                app:met_baseColor="#606060"
+                app:met_clearButton="true"
+                app:met_errorColor="#ff0000"
+                app:met_floatingLabel="normal"
+                app:met_floatingLabelTextColor="#6c6c6c"
+                app:met_helperTextColor="#6c6c6c"
+                app:met_primaryColor="#2196F3"
+                app:met_textColor="#343539"
+                app:met_textColorHint="#6c6c6c"
+                app:met_underlineColor="#003587" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/met_remark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/met_unlike"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:layout_marginTop="5dip"
+                android:focusableInTouchMode="true"
+                android:hint="请输入备注信息"
+                app:met_baseColor="#606060"
+                app:met_clearButton="true"
+                app:met_errorColor="#ff0000"
+                app:met_floatingLabel="normal"
+                app:met_floatingLabelTextColor="#6c6c6c"
+                app:met_helperTextColor="#6c6c6c"
+                app:met_primaryColor="#2196F3"
+                app:met_textColor="#343539"
+                app:met_textColorHint="#6c6c6c"
+                app:met_underlineColor="#003587" />
+
+            <RelativeLayout
+                android:id="@+id/pic_content"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_below="@id/met_remark"
+                android:background="@drawable/bg_pic_edit"
+                android:paddingTop="8dp" >
+
+                <View
+                    android:id="@+id/view_helper"
+                    android:layout_width="1dp"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="8dp"
+                    android:background="#00000000" />
+
+                <LinearLayout
+                    android:id="@+id/open_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_toLeftOf="@id/view_helper"
+                    android:background="@drawable/selector_edit_pic"
+                    android:gravity="center"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp" >
+
+                    <ImageView
+                        android:id="@+id/open_pic"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:background="@drawable/open_picture"
+                        android:scaleType="centerInside" />
+
+                    <TextView
+                        android:id="@+id/open_pic_tips"
+                        style="@style/TextTheme.tipstheme_second"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dip"
+                        android:gravity="center"
+                        android:text="添加图片" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/take_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_toRightOf="@id/view_helper"
+                    android:background="@drawable/selector_edit_pic"
+                    android:gravity="center"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp" >
+
+                    <ImageView
+                        android:id="@+id/take_pic"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:background="@drawable/take_picture"
+                        android:scaleType="centerInside" />
+
+                    <TextView
+                        android:id="@+id/take_pic_tips"
+                        style="@style/TextTheme.tipstheme_second"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dip"
+                        android:gravity="center"
+                        android:text="拍照添加" />
+                </LinearLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+</LinearLayout>
